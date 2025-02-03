@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navatech_assignment/presentation/home_route.dart';
 
 void main() => runApp(const ExampleApp());
 
@@ -8,7 +9,7 @@ class ExampleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MyWidget(),
+      home: HomeRoute(),
     );
   }
 }
