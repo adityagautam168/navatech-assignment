@@ -1,16 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'photo.g.dart';
+part 'photo_dto.g.dart';
 
 @JsonSerializable()
-class Photo {
+class PhotoDTO {
   final int? albumId;
   final int? id;
   final String? title;
   final String? url;
   final String? thumbnailUrl;
 
-  const Photo({
+  const PhotoDTO({
     this.albumId,
     this.id,
     this.title,
@@ -18,7 +18,7 @@ class Photo {
     this.thumbnailUrl,
   });
 
-  factory Photo.fromJson(Map<String, dynamic> json) => _$PhotoFromJson(json);
+  factory PhotoDTO.fromJson(Map<String, dynamic> json) => _$PhotoDTOFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PhotoToJson(this);
+  Map<String, dynamic> toJson() => _$PhotoDTOToJson(this);
 }

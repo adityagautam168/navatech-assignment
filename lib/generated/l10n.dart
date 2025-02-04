@@ -12,46 +12,56 @@ import 'intl/messages_all.dart';
 // ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
 // ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
 
-class String {
-  String();
+class Strings {
+  Strings();
 
-  static String? _current;
+  static Strings? _current;
 
-  static String get current {
+  static Strings get current {
     assert(_current != null,
-        'No instance of String was loaded. Try to initialize the String delegate before accessing String.current.');
+        'No instance of Strings was loaded. Try to initialize the Strings delegate before accessing Strings.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
-  static Future<String> load(Locale locale) {
+  static Future<Strings> load(Locale locale) {
     final name = (locale.countryCode?.isEmpty ?? false)
         ? locale.languageCode
         : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      final instance = String();
-      String._current = instance;
+      final instance = Strings();
+      Strings._current = instance;
 
       return instance;
     });
   }
 
-  static String of(BuildContext context) {
-    final instance = String.maybeOf(context);
+  static Strings of(BuildContext context) {
+    final instance = Strings.maybeOf(context);
     assert(instance != null,
-        'No instance of String present in the widget tree. Did you add String.delegate in localizationsDelegates?');
+        'No instance of Strings present in the widget tree. Did you add Strings.delegate in localizationsDelegates?');
     return instance!;
   }
 
-  static String? maybeOf(BuildContext context) {
-    return Localizations.of<String>(context, String);
+  static Strings? maybeOf(BuildContext context) {
+    return Localizations.of<Strings>(context, Strings);
+  }
+
+  /// `Album Gallery`
+  String get albumListTitle {
+    return Intl.message(
+      'Album Gallery',
+      name: 'albumListTitle',
+      desc: '',
+      args: [],
+    );
   }
 }
 
-class AppLocalizationDelegate extends LocalizationsDelegate<String> {
+class AppLocalizationDelegate extends LocalizationsDelegate<Strings> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales {
@@ -63,7 +73,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<String> {
   @override
   bool isSupported(Locale locale) => _isSupported(locale);
   @override
-  Future<String> load(Locale locale) => String.load(locale);
+  Future<Strings> load(Locale locale) => Strings.load(locale);
   @override
   bool shouldReload(AppLocalizationDelegate old) => false;
 

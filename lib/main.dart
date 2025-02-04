@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:navatech_assignment/presentation/home_route.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:navatech_assignment/album_list/bloc/album_list_bloc.dart';
+import 'package:navatech_assignment/album_list/domain/album_list_use_case.dart';
+import 'package:navatech_assignment/album_list/presentation/album_list_route.dart';
+import 'package:navatech_assignment/album_list/repository/album_repository.dart';
+import 'package:navatech_assignment/album_list/repository/photo_repository.dart';
+import 'package:navatech_assignment/generated/l10n.dart';
 
 void main() => runApp(const ExampleApp());
 
@@ -8,8 +14,22 @@ class ExampleApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeRoute(),
+    return MaterialApp(
+      localizationsDelegates: const [
+        Strings.delegate,
+      ],
+      home: BlocProvider(
+        create: (context) {
+          return AlbumListBloc(
+            albumListUseCase: AlbumListUseCase(
+              // TODO(Aditya): Instantiate these via dependency injection
+              albumRepository: AlbumRepositoryImpl(),
+              photoRepository: PhotoRepositoryImpl(),
+            ),
+          )..add(FetchAlbumsList());
+        },
+        child: const AlbumListRoute(),
+      ),
     );
   }
 }

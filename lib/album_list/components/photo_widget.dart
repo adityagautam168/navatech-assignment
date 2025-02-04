@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:navatech_assignment/models/photo.dart';
+import 'package:navatech_assignment/album_list/domain/photo.dart';
 
 class PhotoWidget extends StatelessWidget {
   const PhotoWidget({
