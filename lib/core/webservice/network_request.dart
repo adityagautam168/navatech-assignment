@@ -1,4 +1,4 @@
-import 'package:navatech_assignment/webservice/network_request_type.dart';
+import 'package:navatech_assignment/core/webservice/network_request_type.dart';
 
 class NetworkRequest {
   const NetworkRequest({

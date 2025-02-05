@@ -1,3 +1,12 @@
 {
-  "albumListTitle": "Album Gallery"
+  "albumListTitle": "Album Gallery",
+  "albumTitle": "Album {albumId}",
+  "@albumTitle": {
+    "placeholders": {
+      "albumId": {
+        "type": "String",
+        "example": "1"
+      }
+    }
+  }
 }

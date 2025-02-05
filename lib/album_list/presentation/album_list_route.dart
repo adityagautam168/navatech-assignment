@@ -38,8 +38,10 @@ class AlbumListRoute extends StatelessWidget {
               );
             },
             reverseListBuilder: (context, index) {
+              final int length = state.albumList.length;
+              final int lastIndex = length - 1;
               return AlbumWidget(
-                album: state.albumList[index % state.albumList.length],
+                album: state.albumList[lastIndex - (index % length)],
               );
             },
             separatorBuilder: (context, index) {

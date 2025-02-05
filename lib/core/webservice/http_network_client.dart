@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:http/http.dart';
-import 'package:navatech_assignment/webservice/network_request.dart';
-import 'package:navatech_assignment/webservice/network_request_type.dart';
-import 'package:navatech_assignment/webservice/network_response.dart';
+import 'package:navatech_assignment/core/webservice/network_request.dart';
+import 'package:navatech_assignment/core/webservice/network_request_type.dart';
+import 'package:navatech_assignment/core/webservice/network_response.dart';
 
 class HttpNetworkClient {
   final Client _client = Client();

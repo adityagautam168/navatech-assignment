@@ -59,6 +59,16 @@ class Strings {
       args: [],
     );
   }
+
+  /// `Album {albumId}`
+  String albumTitle(String albumId) {
+    return Intl.message(
+      'Album $albumId',
+      name: 'albumTitle',
+      desc: '',
+      args: [albumId],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Strings> {

@@ -9,11 +9,27 @@ class PhotoWidget extends StatelessWidget {
   });
 
   final Photo photo;
+  double get _photoThumbnailSize => 50;
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: photo.thumbnailUrl ?? '',
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CachedNetworkImage(
+          height: _photoThumbnailSize,
+          width: _photoThumbnailSize,
+          imageUrl: photo.thumbnailUrl ?? '',
+        ),
+        const SizedBox(height: 4),
+        Text(
+          photo.id?.toString() ?? '',
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 10,
+          ),
+        ),
+      ],
     );
   }
 }

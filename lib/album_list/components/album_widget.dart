@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navatech_assignment/album_list/components/infinite_scroll_view.dart';
 import 'package:navatech_assignment/album_list/components/photo_widget.dart';
 import 'package:navatech_assignment/album_list/domain/album.dart';
+import 'package:navatech_assignment/generated/l10n.dart';
 
 class AlbumWidget extends StatelessWidget {
   const AlbumWidget({
@@ -10,7 +11,7 @@ class AlbumWidget extends StatelessWidget {
   });
 
   final Album album;
-  double get _photoThumbnailSize => 50;
+  double get _photoThumbnailSize => 70;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,8 @@ class AlbumWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildTitle(),
+        _buildTitle(context),
+        const SizedBox(height: 8),
         SizedBox(
           height: _photoThumbnailSize,
           child: _buildPhotosList(),
@@ -27,9 +29,9 @@ class AlbumWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle() {
+  Widget _buildTitle(BuildContext context) {
     return Text(
-      album.title ?? '',
+      Strings.of(context).albumTitle(album.id?.toString() ?? ''),
       style: const TextStyle(color: Colors.black),
     );
   }
@@ -44,8 +46,12 @@ class AlbumWidget extends StatelessWidget {
         );
       },
       reverseListBuilder: (context, index) {
+        final int? length = album.photoList?.length;
+        final int? lastIndex = length != null ? length - 1 : null;
         return PhotoWidget(
-          photo: (album.photoList ?? [])[index % (album.photoList?.length ?? 1)],
+          photo: (album.photoList ?? [])[
+            (lastIndex ?? index) - (index % (length ?? 1))
+          ],
         );
       },
       separatorBuilder: (context, index) => const SizedBox(width: 16),
