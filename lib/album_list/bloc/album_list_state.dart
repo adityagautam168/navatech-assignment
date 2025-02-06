@@ -13,3 +13,15 @@ final class AlbumListFetched extends AlbumListState {
 
   final List<Album> albumList;
 }
+
+final class NoNetworkExceptionState extends AlbumListState {
+  const NoNetworkExceptionState(this.displayMessage);
+
+  final String displayMessage;
+}
+
+final class UnknownExceptionState extends AlbumListState {
+  const UnknownExceptionState(this.displayMessage);
+
+  final String displayMessage;
+}

@@ -38,7 +38,7 @@ class ExampleApp extends StatelessWidget {
         create: (context) {
           return AlbumListBloc(
             albumRepository: DependencyInjector().get(),
-          )..add(FetchAlbumsList());
+          )..add(const FetchAlbumsList());
         },
         child: const AlbumListRoute(),
       ),

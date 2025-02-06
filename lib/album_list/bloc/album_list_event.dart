@@ -1,5 +1,9 @@
 part of 'album_list_bloc.dart';
 
-sealed class AlbumListEvent {}
+sealed class AlbumListEvent {
+  const AlbumListEvent();
+}
 
-class FetchAlbumsList extends AlbumListEvent {}
+class FetchAlbumsList extends AlbumListEvent {
+  const FetchAlbumsList();
+}

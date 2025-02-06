@@ -8,5 +8,9 @@
         "example": "1"
       }
     }
-  }
+  },
+  "noInternetConnectionError": "No internet connection detected, please connect to the internet and try again",
+  "requestTimedOutError": "Request timed out, please try again later",
+  "unknownError": "Something went wrong, please try again later",
+  "retry": "Retry"
 }

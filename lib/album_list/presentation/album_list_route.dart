@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:navatech_assignment/album_list/bloc/album_list_bloc.dart';
 import 'package:navatech_assignment/album_list/components/album_placeholder_widget.dart';
 import 'package:navatech_assignment/album_list/components/album_widget.dart';
+import 'package:navatech_assignment/album_list/components/error_widget.dart';
 import 'package:navatech_assignment/album_list/components/infinite_scroll_view.dart';
 import 'package:navatech_assignment/generated/l10n.dart';
 
@@ -27,7 +28,10 @@ class AlbumListRoute extends StatelessWidget {
 
   Widget _buildAlbumList() {
     return BlocBuilder<AlbumListBloc, AlbumListState>(
-      buildWhen: (previous, current) => current is AlbumListFetched,
+      buildWhen: (previous, current) =>
+          current is AlbumListFetched ||
+          current is NoNetworkExceptionState ||
+          current is UnknownExceptionState,
       builder: (context, state) {
         if (state is AlbumListFetched) {
           return BidirectionalListView.separated(
@@ -47,6 +51,28 @@ class AlbumListRoute extends StatelessWidget {
             separatorBuilder: (context, index) {
               return const Divider();
             },
+          );
+        } else if (state is NoNetworkExceptionState) {
+          return Center(
+            child: NoNetworkErrorWidget(
+              displayMessage: state.displayMessage,
+              onRetryPressed: () {
+                BlocProvider.of<AlbumListBloc>(context).add(
+                  const FetchAlbumsList(),
+                );
+              },
+            ),
+          );
+        } else if (state is UnknownExceptionState) {
+          return Center(
+            child: UnknownErrorWidget(
+              displayMessage: state.displayMessage,
+              onRetryPressed: () {
+                BlocProvider.of<AlbumListBloc>(context).add(
+                  const FetchAlbumsList(),
+                );
+              },
+            ),
           );
         } else {
           return const FullScreenLoaderWidget();

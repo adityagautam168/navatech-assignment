@@ -35,7 +35,7 @@ class AlbumRepositoryImpl extends AlbumRepository {
     // Check cache availability
     final List<AlbumDao>? cachedResponse = await _getAlbumListFromCache();
     // Fetch from cache if present
-    if (false && cachedResponse != null && cachedResponse.isNotEmpty) {
+    if (cachedResponse != null && cachedResponse.isNotEmpty) {
       return cachedResponse.map<Album>(
         (e) {
           return Album(

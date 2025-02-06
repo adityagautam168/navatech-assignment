@@ -69,6 +69,46 @@ class Strings {
       args: [albumId],
     );
   }
+
+  /// `No internet connection detected, please connect to the internet and try again`
+  String get noInternetConnectionError {
+    return Intl.message(
+      'No internet connection detected, please connect to the internet and try again',
+      name: 'noInternetConnectionError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request timed out, please try again later`
+  String get requestTimedOutError {
+    return Intl.message(
+      'Request timed out, please try again later',
+      name: 'requestTimedOutError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong, please try again later`
+  String get unknownError {
+    return Intl.message(
+      'Something went wrong, please try again later',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Strings> {

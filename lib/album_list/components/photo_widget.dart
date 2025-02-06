@@ -20,6 +20,12 @@ class PhotoWidget extends StatelessWidget {
           height: _photoThumbnailSize,
           width: _photoThumbnailSize,
           imageUrl: photo.thumbnailUrl ?? '',
+          placeholder: (context, url) {
+            return const Padding(
+              padding: EdgeInsets.all(16),
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
         const SizedBox(height: 4),
         Text(

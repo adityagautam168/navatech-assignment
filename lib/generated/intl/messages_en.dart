@@ -25,6 +25,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "albumListTitle": MessageLookupByLibrary.simpleMessage("Album Gallery"),
-        "albumTitle": m0
+        "albumTitle": m0,
+        "noInternetConnectionError": MessageLookupByLibrary.simpleMessage(
+            "No internet connection detected, please connect to the internet and try again"),
+        "requestTimedOutError": MessageLookupByLibrary.simpleMessage(
+            "Request timed out, please try again later"),
+        "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+        "unknownError": MessageLookupByLibrary.simpleMessage(
+            "Something went wrong, please try again later")
       };
 }
